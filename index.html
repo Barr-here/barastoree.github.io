@@ -1258,7 +1258,7 @@
       <div class="category-label">Selected Category</div>
       <div class="category-name" id="greetingText"></div>
     </div>
-    <div class="endpoint-badge" id="countBadge">3 links</div>
+    <div class="endpoint-badge" id="countBadge">Kategori</div>
   </div>
 
   <!-- CARDS -->
@@ -1378,7 +1378,7 @@
       </div>    
     </div>
   </div>
-
+  
   <div class="footer">© 2026 Barr Store</div>
   
   <script>
@@ -1776,7 +1776,7 @@
         card.classList.toggle('hidden', !match);
         if (match) visible++;
       });
-      countBadge.textContent = visible + ' link' + (visible !== 1 ? 's' : '');
+      countBadge.textContent = visible + ' Kategori' + (visible !== 1 ? 's' : '');
     });
   </script>
   
@@ -1973,7 +1973,7 @@
         color: var(--subtext);
         font-family: var(--mono);
       ">
-        ${jam}:${menit}:${detik} WIB
+        Time : ${jam}:${menit}:${detik}
       </span>
     `;
 
