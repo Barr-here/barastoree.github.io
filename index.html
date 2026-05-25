@@ -832,6 +832,267 @@
       pointer-events: auto;
     }
     
+    /* MINI GRID */
+.mini-grid {
+
+  width: 100%;
+  max-width: 520px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-bottom: 14px;
+}
+
+/* MINI CARD */
+.mini-card {
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  padding: 14px;
+  
+  cursor: pointer;
+
+  transition: 0.25s;
+
+  box-shadow: var(--shadow2);
+}
+
+.mini-card:hover {
+
+  transform: translateY(-2px);
+
+  border-color: var(--accent);
+}
+
+/* TEXT */
+.mini-title {
+
+  font-family: var(--mono);
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  margin-bottom: 4px;
+}
+
+.mini-desc {
+
+  font-size: 12px;
+
+  color: var(--subtext);
+
+  line-height: 1.5;
+}
+
+/* MOBILE */
+@media (max-width: 520px) {
+
+  .mini-grid {
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 900px) {
+
+  .mini-grid {
+
+    justify-content: flex-start;
+
+    max-width: 520px;
+
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+}
+
+/* OVERLAY */
+.testi-overlay {
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.45);
+
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.25s;
+
+  z-index: 99999;
+}
+
+.testi-overlay.show {
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* POPUP */
+.testi-popup {
+
+  width: 92%;
+  max-width: 760px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+/* HEADER */
+.testi-header {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+}
+
+.testi-title {
+
+  font-family: var(--mono);
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+.testi-sub {
+
+  font-size: 12px;
+
+  color: var(--subtext);
+
+  margin-top: 2px;
+}
+
+.testi-close {
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  background: var(--surface2);
+
+  color: var(--text);
+
+  cursor: pointer;
+}
+
+/* SLIDER */
+.testi-slider {
+
+  display: flex;
+
+  gap: 14px;
+
+  overflow-x: auto;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+}
+
+.testi-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.testi-card {
+
+  flex: 0 0 220px;
+
+  background: var(--surface2);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+/* IMAGE */
+.testi-img {
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  display: block;
+  
+  pointer-events: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  -webkit-touch-callout: none;
+}
+
+/* CONTENT */
+.testi-content {
+
+  padding: 14px;
+}
+
+.testi-date {
+
+  font-size: 11px;
+
+  color: var(--subtext);
+
+  margin-bottom: 6px;
+}
+
+.testi-name {
+
+  font-family: var(--mono);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 4px;
+}
+
+.testi-desc {
+
+  font-size: 12px;
+
+  color: var(--subtext);
+
+  line-height: 1.5;
+}
+
     /* DONATION */
 .donation-card {
 
@@ -1206,39 +1467,33 @@
   </div>
   
   <!-- BANNER POPUP -->
-<div class="banner-popup-overlay" id="bannerPopupOverlay">
+  <div class="banner-popup-overlay" id="bannerPopupOverlay">
+    <div class="banner-popup" id="bannerPopup">
+      <div class="banner-popup-title" id="popupTitle">
+        Barr Store
+      </div>
+  
+      <div class="banner-popup-buttons">
+        <a
+          href="#"
+          target="_blank"
+          class="popup-btn wa"
+          id="popupWa"
+        >
+          WhatsApp
+        </a>
 
-  <div class="banner-popup" id="bannerPopup">
-
-    <div class="banner-popup-title" id="popupTitle">
-      Barr Store
+        <a
+          href="#"
+          target="_blank"
+          class="popup-btn tele"
+          id="popupTele"
+        >
+          Telegram
+        </a>
+      </div>
     </div>
-
-    <div class="banner-popup-buttons">
-
-      <a
-        href="#"
-        target="_blank"
-        class="popup-btn wa"
-        id="popupWa"
-      >
-        WhatsApp
-      </a>
-
-      <a
-        href="#"
-        target="_blank"
-        class="popup-btn tele"
-        id="popupTele"
-      >
-        Telegram
-      </a>
-
-    </div>
-
   </div>
-
-</div>
 
   <!-- SEARCH -->
   <div class="search-wrap">
@@ -1260,6 +1515,35 @@
     </div>
     <div class="endpoint-badge" id="countBadge">Kategori</div>
   </div>
+  
+  <!-- TESTIMONI SECTION -->
+<div class="mini-grid">
+
+  <!-- TESTIMONI -->
+  <div class="mini-card" id="openTesti">
+    <div class="mini-title">
+      Testimoni
+    </div>
+
+    <div class="mini-desc">
+      Bukti orderan✨
+    </div>
+
+  </div>
+
+  <!-- EMPTY -->
+  <div class="mini-card">
+    <div class="mini-title">
+      Soon
+    </div>
+
+    <div class="mini-desc">
+      coming soon
+    </div>
+
+  </div>
+
+</div>
 
   <!-- CARDS -->
   <div class="endpoints" id="endpointList">
@@ -1302,6 +1586,41 @@
 
   </div>
   
+  <!-- TESTI POPUP -->
+<div class="testi-overlay" id="testiOverlay">
+
+  <div class="testi-popup">
+
+    <div class="testi-header">
+
+      <div>
+        <div class="testi-title">
+          Testimoni Customer
+        </div>
+
+        <div class="testi-sub">
+          Nihh bukti transaksi biar ga ragu :)
+        </div>
+      </div>
+
+      <button
+        class="testi-close"
+        id="closeTesti"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <div
+      class="testi-slider"
+      id="testiSlider"
+    ></div>
+
+  </div>
+
+</div>
+
   <!-- QRIS POPUP -->
 <div class="qris-popup-overlay" id="qrisPopup">
 
@@ -1413,6 +1732,102 @@
     }
 
   };
+
+</script>
+
+<script>
+
+const testimonials = [
+  {
+    image: 'https://c.termai.cc/i130/OvCHGNh.jpg',
+    date: '25 Mei 2026',
+    title: '#1 AM Premium',
+    desc: 'Terimkasih atas kepercayaan anda🌹'
+  }
+];
+
+const testiSlider =
+  document.getElementById(
+    'testiSlider'
+  );
+
+testimonials.forEach(item => {
+
+  testiSlider.innerHTML += `
+
+    <div class="testi-card">
+
+      <img
+        class="testi-img"
+        src="${item.image}"
+        loading="lazy"
+        draggable="false"
+      >
+
+      <div class="testi-content">
+
+        <div class="testi-date">
+          ${item.date}
+        </div>
+
+        <div class="testi-name">
+          ${item.title}
+        </div>
+
+        <div class="testi-desc">
+          ${item.desc}
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+});
+
+/* OPEN */
+document
+.getElementById('openTesti')
+.onclick = () => {
+
+  document
+  .getElementById(
+    'testiOverlay'
+  )
+  .classList.add('show');
+
+};
+
+/* CLOSE */
+document
+.getElementById('closeTesti')
+.onclick = () => {
+
+  document
+  .getElementById(
+    'testiOverlay'
+  )
+  .classList.remove('show');
+
+};
+
+/* CLICK OUTSIDE */
+document
+.getElementById('testiOverlay')
+.addEventListener('click', e => {
+
+  if (
+    e.target.id ===
+    'testiOverlay'
+  ) {
+
+    e.currentTarget
+    .classList.remove('show');
+
+  }
+
+});
 
 </script>
 
