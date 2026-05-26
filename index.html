@@ -1159,9 +1159,56 @@
   pointer-events: none;
 }
 
+
 @keyframes testiGlowMove {
   0% { left: -60%; }
   100% { left: 160%; }
+}
+
+.testi-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: -5px;
+}
+
+.like-btn {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  background: transparent;
+
+  border: none;
+
+  color: var(--subtext);
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  font-family: var(--mono);
+
+  transition: 0.25s;
+}
+
+.like-btn:hover {
+
+  transform: scale(1.08);
+}
+
+.like-btn.liked {
+
+  color: #ff4d6d;
 }
 
     /* DONATION */
@@ -1833,9 +1880,19 @@ testimonials.forEach(item => {
       >
 
       <div class="testi-content">
-
-        <div class="testi-date">
-          ${item.date}
+        <div class="testi-meta">
+          <div class="testi-date">
+            ${item.date}
+          </div>
+          <button
+            class="like-btn"
+           data-id="${item.title}"
+          >
+            ♥
+            <span class="like-count">
+              0
+            </span>
+          </button>
         </div>
 
         <div class="testi-name">
@@ -1873,6 +1930,75 @@ document
   .classList.remove('show');
   document.body.style.overflow = '';
 };
+
+document
+.querySelectorAll('.like-btn')
+.forEach(btn => {
+
+  const id =
+    btn.dataset.id;
+
+  const countEl =
+    btn.querySelector(
+      '.like-count'
+    );
+
+  let likes =
+    Number(
+      localStorage.getItem(
+        'likes_' + id
+      )
+    ) || 0;
+
+  let liked =
+    localStorage.getItem(
+      'liked_' + id
+    ) === 'true';
+
+  function updateLikeUI() {
+
+    countEl.textContent =
+      likes;
+
+    btn.classList.toggle(
+      'liked',
+      liked
+    );
+
+  }
+
+  updateLikeUI();
+
+  btn.onclick = () => {
+
+    liked = !liked;
+
+    if (liked) {
+
+      likes++;
+
+    } else {
+
+      likes =
+        Math.max(0, likes - 1);
+
+    }
+
+    localStorage.setItem(
+      'likes_' + id,
+      likes
+    );
+
+    localStorage.setItem(
+      'liked_' + id,
+      liked
+    );
+
+    updateLikeUI();
+
+  };
+
+});
 </script>
 
   <script>
