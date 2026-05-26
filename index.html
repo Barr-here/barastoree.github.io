@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barr Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <img class="avatar" src="https://c.termai.cc/i180/IUA.jpg" alt="Barr Store">
+      <div>
+        <div class="brand-name">Barr Store</div>
+        <div class="brand-tag">⌗ Selamat datang...</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-dot"></div>
+      <div class="status-text">online</div>
+      <button class="theme-btn" id="themeBtn">🌙</button>
+    </div>
+  </div>
+  
+  <div class="theme-popup" id="themePopup">
+    ℹ️ Klik tombol ini untuk mengganti tema gelap
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner-slider">
+    <div class="banner-track" id="bannerTrack"></div>
+  </div>
+  
+  <!-- BANNER POPUP -->
+  <div class="banner-popup-overlay" id="bannerPopupOverlay">
+    <div class="banner-popup" id="bannerPopup">
+      <div class="banner-popup-title" id="popupTitle">
+        Barr Store
+      </div>
+  
+      <div class="banner-popup-buttons">
+        <a
+          href="#"
+          target="_blank"
+          class="popup-btn wa"
+          id="popupWa"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href="#"
+          target="_blank"
+          class="popup-btn tele"
+          id="popupTele"
+        >
+          Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-input"
+      id="searchInput"
+      type="text"
+      placeholder="Search categories..."
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- CATEGORY -->
+  <div class="category-header" id="openTags">
+    <div>
+      <div class="category-label">Selected Category</div>
+      <div class="category-name" id="greetingText"></div>
+    </div>
+    <div class="endpoint-badge" id="countBadge">Kategori</div>
+  </div>
+  
+  <!-- TESTIMONI SECTION -->
+  <div class="mini-grid">
+
+    <!-- TESTIMONI -->
+    <div class="mini-card testi-highlight" id="openTesti">
+      <div class="mini-title">
+        Testimoni
+      </div>
+
+      <div class="mini-desc">
+        Lihat bukti transaksi...
+      </div>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="mini-card">
+      <div class="mini-title">
+        Soon
+      </div>
+
+      <div class="mini-desc">
+        coming soon
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="endpoints" id="endpointList">
+
+    <a class="card copy-card"
+      href="javascript:void(0)"
+      data-copy="https://whatsapp.com/channel/0029Vb6ntRrJZg45rtr1O82c"
+      data-name="saluran animelyrics anime lyrics channel whatsapp">
+
+      <div class="card-top">
+        <div class="methods">
+          <span class="method-tag get">CHANNEL</span>
+        </div>
+        <span class="chevron">›</span>
+      </div>
+
+      <div class="endpoint-path">Saluran anime lyrics</div>
+      <div class="endpoint-desc">
+        Klik untuk menyalin link channel
+      </div>
+    </a>
+
+    <a class="card copy-card"
+      href="javascript:void(0)"
+      data-copy="https://chat.whatsapp.com/HBhus8UYwGv6k8Sl2Y6luq"
+      data-name="group whatsapp komunitas bot">
+
+      <div class="card-top">
+        <div class="methods">
+          <span class="method-tag get">GROUP</span>
+        </div>
+        <span class="chevron">›</span>
+      </div>
+
+      <div class="endpoint-path">Grup bot Elaina</div>
+      <div class="endpoint-desc">
+        Klik untuk menyalin link grup
+      </div>
+    </a>
+
+  </div>
+  
+  <!-- TESTI POPUP -->
+  <div class="testi-overlay" id="testiOverlay">
+    <div class="testi-popup">
+      <div class="testi-header">
+        <div>
+          <div class="testi-title">
+            Testimoni Customer
+          </div>
+
+          <div class="testi-sub">
+            Nihh bukti transaksi biar ga ragu :)
+          </div>
+        </div>
+
+        <button
+          class="testi-close"
+          id="closeTesti"
+        >
+          ✕
+        </button>
+      </div>
+      <div
+        class="testi-slider"
+        id="testiSlider"
+      ></div>
+    </div>
+  </div>
+
+  <!-- QRIS POPUP -->
+  <div class="qris-popup-overlay" id="qrisPopup">
+    <div class="qris-popup">
+    
+      <img
+        src="https://c.termai.cc/i113/nWNoqg.jpg"
+        alt="QRIS"
+        class="qris-image"
+        draggable="false"
+      >
+
+      <div class="qris-buttons">
+        <a
+          href="https://c.termai.cc/i113/nWNoqg.jpg"
+          download
+          target="_blank"
+          class="donation-btn"
+        >
+          Unduh Qris
+        </a>
+
+        <button
+          class="donation-btn qris-close"
+          id="closeQris"
+        >
+          Tutup
+        </button>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- DONATION -->
+  <div class="donation-card">
+    <div class="donation-top">
+    
+      <img
+        src="https://c.termai.cc/i161/uiMDob.jpg"
+        alt="Donate QRIS"
+        class="donation-image"
+        draggable="false"
+      >
+    </div>
+
+    <div class="donation-content">
+
+      <div class="donation-title">
+        Support Barr
+      </div>
+
+      <div class="donation-desc">
+        Jika ada duit lebih boleh lah minta dikit bg ☕🗿
+      </div>
+
+      <div class="donation-buttons">
+        <a
+          href="https://saweria.co/BaraStore918"
+          target="_blank"
+          class="donation-btn"
+        >
+          Donasi
+        </a>
+
+        <button
+          class="donation-btn qris-btn"
+          id="openQris"
+        >
+          Get Qris
+        </button>
+      </div>    
+    </div>
+  </div>
+  
+  <div class="footer">© 2026 Barr Store</div>
+  
+  <div class="copy-popup" id="copyPopup"></div>
+   
+  <div class="tags-overlay" id="tagsOverlay"></div>
+
+  <div class="tags-popup" id="tagsPopup">
+
+    <div class="tags-title">
+      Pilih Tag Pencarian
+    </div>
+
+    <div class="tags-list" id="tagsList"></div>
+
+  </div> 
+  
+  <script src="js/main.js"></script>
+</body>
+</html>
