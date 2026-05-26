@@ -850,26 +850,40 @@
 /* MINI CARD */
 .mini-card {
 
+  position: relative;
+
   background: var(--surface);
 
   border: 1px solid var(--border);
 
   border-radius: 16px;
 
-  padding: 14px;
-  
+  padding: 10px;
+
+  min-height: 60px;
+
+  overflow: hidden;
+
   cursor: pointer;
 
-  transition: 0.25s;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
 
   box-shadow: var(--shadow2);
+
+  backdrop-filter: blur(12px);
 }
 
 .mini-card:hover {
 
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 
   border-color: var(--accent);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.12);
 }
 
 /* TEXT */
@@ -877,7 +891,7 @@
 
   font-family: var(--mono);
 
-  font-size: 16px;
+  font-size: 14px;
 
   font-weight: 700;
 
@@ -886,7 +900,7 @@
 
 .mini-desc {
 
-  font-size: 12px;
+  font-size: 10px;
 
   color: var(--subtext);
 
@@ -1091,6 +1105,63 @@
   color: var(--subtext);
 
   line-height: 1.5;
+}
+
+.testi-highlight {
+  position: relative;
+  overflow: hidden;
+  border-color:
+    rgba(255,255,255,0.08);
+  background:
+    linear-gradient(
+      135deg,
+      var(--surface),
+      var(--surface2)
+    );
+}
+
+.testi-highlight::after {
+  content: 'NEW';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-family: var(--mono);
+  font-weight: 700;
+  color: white;
+  background: var(--accent);
+  padding: 5px 9px;
+  border-radius: 999px;
+  box-shadow: 0 0 12px var(--accent-glow); 
+}
+
+/* MOVING LIGHT */
+.testi-highlight::before {
+  content: '';
+  position: absolute;
+  top: -120%;
+  left: -40%;
+  width: 60%;
+  height: 300%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      color-mix(
+        in srgb,
+        var(--accent) 35%,
+        transparent
+      ),
+      transparent
+    );
+  transform: rotate(25deg);
+  animation: testiGlowMove 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes testiGlowMove {
+  0% { left: -60%; }
+  100% { left: 160%; }
 }
 
     /* DONATION */
@@ -1517,33 +1588,30 @@
   </div>
   
   <!-- TESTIMONI SECTION -->
-<div class="mini-grid">
+  <div class="mini-grid">
 
-  <!-- TESTIMONI -->
-  <div class="mini-card" id="openTesti">
-    <div class="mini-title">
-      Testimoni
+    <!-- TESTIMONI -->
+    <div class="mini-card testi-highlight" id="openTesti">
+      <div class="mini-title">
+        Testimoni
+      </div>
+
+      <div class="mini-desc">
+        Lihat bukti transaksi...
+      </div>
     </div>
 
-    <div class="mini-desc">
-      Bukti orderan✨
-    </div>
+    <!-- EMPTY -->
+    <div class="mini-card">
+      <div class="mini-title">
+        Soon
+      </div>
 
+      <div class="mini-desc">
+        coming soon
+      </div>
+    </div>
   </div>
-
-  <!-- EMPTY -->
-  <div class="mini-card">
-    <div class="mini-title">
-      Soon
-    </div>
-
-    <div class="mini-desc">
-      coming soon
-    </div>
-
-  </div>
-
-</div>
 
   <!-- CARDS -->
   <div class="endpoints" id="endpointList">
@@ -1790,26 +1858,20 @@ testimonials.forEach(item => {
 document
 .getElementById('openTesti')
 .onclick = () => {
-
   document
-  .getElementById(
-    'testiOverlay'
-  )
+  .getElementById('testiOverlay')
   .classList.add('show');
-
+  document.body.style.overflow = 'hidden';
 };
 
 /* CLOSE */
 document
 .getElementById('closeTesti')
 .onclick = () => {
-
   document
-  .getElementById(
-    'testiOverlay'
-  )
+  .getElementById('testiOverlay')
   .classList.remove('show');
-
+  document.body.style.overflow = '';
 };
 
 /* CLICK OUTSIDE */
@@ -1953,12 +2015,11 @@ document
     .forEach(card => {
 
       card.addEventListener('click', () => {
-
         popupTitle.textContent = card.dataset.title;
         popupWa.href = card.dataset.wa;
         popupTele.href = card.dataset.tele;
         bannerPopupOverlay.classList.add('show');
-
+        document.body.style.overflow = 'hidden';
       });
 
     });
@@ -1968,6 +2029,7 @@ document
     .addEventListener('click', (e) => {
       if (e.target === bannerPopupOverlay) {
         bannerPopupOverlay.classList.remove('show');
+        document.body.style.overflow = '';
       }
     });
   </script>
@@ -2325,17 +2387,15 @@ document
     });
 
     openTags.onclick = () => {
-
       tagsPopup.classList.add('show');
       tagsOverlay.classList.add('show');
-
+      document.body.style.overflow = 'hidden';
     };
 
     tagsOverlay.onclick = () => {
-
       tagsPopup.classList.remove('show');
       tagsOverlay.classList.remove('show');
-
+      document.body.style.overflow = '';
     };
   </script>
   
@@ -2399,45 +2459,5 @@ document
   setInterval(updateGreeting, 1000);
 
 </script>
-
-<script>
-
-const isChrome =
-  /Chrome/.test(
-    navigator.userAgent
-  )
-  &&
-  /Google Inc/.test(
-    navigator.vendor
-  );
-
-if (!isChrome) {
-
-  const goChrome = confirm(
-    'Website ini lebih optimal dibuka di Google Chrome.\n\nBuka sekarang?'
-  );
-
-  if (goChrome) {
-
-    const currentUrl =
-      window.location.href;
-
-    const chromeIntent =
-      'intent://' +
-      currentUrl.replace(
-        /^https?:\/\//,
-        ''
-      ) +
-      '#Intent;scheme=https;package=com.android.chrome;end';
-
-    window.location.href =
-      chromeIntent;
-
-  }
-
-}
-
-</script>
-
 </body>
 </html>
