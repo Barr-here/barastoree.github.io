@@ -305,6 +305,7 @@
             if (other !== card) other.classList.remove('active');
           });
           card.classList.toggle('active');
+          document.body.style.overflow = '';
         });
       });
 
