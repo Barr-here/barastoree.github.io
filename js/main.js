@@ -319,41 +319,10 @@
     
     // 々  Memuat Testimoni
     const testiSlider = document.getElementById('testiSlider');
-
-    // Kunci storage untuk data likes global (shared antar tab/session di browser yg sama)
-    const LIKES_STORE_KEY = 'testi_likes_db';
-
-    // Ambil database likes dari localStorage (simulasi database global)
-    function getLikesDB() {
-      try {
-        return JSON.parse(localStorage.getItem(LIKES_STORE_KEY)) || {};
-      } catch {
-        return {};
-      }
-    }
-
-    // Simpan database likes ke localStorage
-    function saveLikesDB(db) {
-      localStorage.setItem(LIKES_STORE_KEY, JSON.stringify(db));
-    }
-
     fetch('database/testimonials.json')
       .then(r => r.json())
       .then(testimonials => {
-
-        // Inisialisasi likes dari testimonials.json ke db jika belum ada
-        const db = getLikesDB();
         testimonials.forEach(item => {
-          const key = 'likes_' + item.title;
-          // Jika belum ada di db, ambil nilai dari JSON sebagai seed awal
-          if (db[key] === undefined) {
-            db[key] = Number(item.likes) || 0;
-          }
-        });
-        saveLikesDB(db);
-
-        testimonials.forEach(item => {
-          const currentLikes = getLikesDB()['likes_' + item.title] || 0;
           testiSlider.innerHTML += `
             <div class="testi-card">
               <img
@@ -366,7 +335,7 @@
                 <div class="testi-meta">
                 <div class="testi-date">${item.date}</div>
                 <button class="like-btn" data-id="${item.title}">
-                  ♥ <span class="like-count">${currentLikes}</span>
+                  ♥ <span class="like-count">0</span>
                 </button>
               </div>
               <div class="testi-name">${item.title}</div>
@@ -381,30 +350,25 @@
 
         const id = btn.dataset.id;
         const countEl = btn.querySelector('.like-count');
-        const likeKey = 'likes_' + id;
-        const likedKey = 'user_liked_' + id; // apakah USER INI sudah like
 
-        // liked status per-user tetap di key terpisah
-        let liked = localStorage.getItem(likedKey) === 'true';
+        let likes = Number(localStorage.getItem('likes_' + id)) || 0;
+        let liked = localStorage.getItem('liked_' + id) === 'true';
 
         function updateLikeUI() {
-          const db = getLikesDB();
-          countEl.textContent = db[likeKey] || 0;
+          countEl.textContent = likes;
           btn.classList.toggle('liked', liked);
         }
 
         updateLikeUI();
-
         btn.onclick = () => {
           liked = !liked;
-          const db = getLikesDB();
           if (liked) {
-            db[likeKey] = (db[likeKey] || 0) + 1;
+            likes++;
           } else {
-            db[likeKey] = Math.max(0, (db[likeKey] || 0) - 1);
+            likes = Math.max(0, likes - 1);
           }
-          saveLikesDB(db);
-          localStorage.setItem(likedKey, liked);
+          localStorage.setItem('likes_' + id, likes);
+          localStorage.setItem('liked_' + id, liked);
           updateLikeUI();
         };
       });
