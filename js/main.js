@@ -98,6 +98,7 @@
         searchInput.dispatchEvent(new Event('input'));
         tagsPopup.classList.remove('show');
         tagsOverlay.classList.remove('show');
+        document.body.style.overflow = '';
       };
       
       tagsList.appendChild(btn);
@@ -305,7 +306,6 @@
             if (other !== card) other.classList.remove('active');
           });
           card.classList.toggle('active');
-          document.body.style.overflow = '';
         });
       });
 
