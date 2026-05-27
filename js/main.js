@@ -179,31 +179,22 @@
     card.addEventListener('click', (e) => {
       e.preventDefault();
       const url = card.getAttribute('data-copy');
+      const input = document.createElement('input');
+      
+      input.value = url;
+      document.body.appendChild(input);
 
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url)
-          .then(() => showPopup('✅ Tautan berhasil disalin', 'success'))
-          .catch(() => showPopup('‼️ Gagal menyalin tautan', 'error'));
+      input.select();
+      input.setSelectionRange(0, 99999);
+
+      const copied = document.execCommand('copy');
+
+      document.body.removeChild(input);
+
+      if (copied) {
+        showPopup('✅ Tautan berhasil disalin', 'success');
       } else {
-        const input = document.createElement('input');
-        input.value = url;
-        input.style.position = 'fixed';
-        input.style.opacity = '0';
-        document.body.appendChild(input);
-        input.focus();
-        input.select();
-        input.setSelectionRange(0, 99999);
-        try {
-          const copied = document.execCommand('copy');
-          if (copied) {
-            showPopup('✅ Tautan berhasil disalin', 'success');
-          } else {
-            showPopup('‼️ Gagal menyalin tautan', 'error');
-          }
-        } catch {
-          showPopup('‼️ Gagal menyalin tautan', 'error');
-        }
-        document.body.removeChild(input);
+        showPopup('‼️ Gagal menyalin tautan', 'error');
       }
     });
   });
