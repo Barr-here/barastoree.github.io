@@ -699,6 +699,15 @@
       }
     }
     
+    .copy-card {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .copy-card::before {
+      pointer-events: none;
+    }
+
     /* THEME POPUP */
     .theme-popup {
       position: absolute;
