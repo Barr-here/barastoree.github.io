@@ -163,6 +163,50 @@
   updateGreeting();
   setInterval(updateGreeting, 1000);
 
+  // 々  POPUP COPY
+  const popup = document.getElementById('copyPopup');
+
+  function showPopup(text, type = 'success') {
+    popup.textContent = text;
+    popup.className = 'copy-popup show ' + type;
+    clearTimeout(window.popupTimeout);
+    window.popupTimeout = setTimeout(() => {
+      popup.classList.remove('show');
+    }, 2200);
+  }
+
+  document.querySelectorAll('.copy-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = card.getAttribute('data-copy');
+
+    // Gunakan Clipboard API modern
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          showPopup('✅ Tautan berhasil disalin', 'success');
+        })
+        .catch(() => {
+          showPopup('‼️ Gagal menyalin tautan', 'error');
+        });
+    } else {
+      // Fallback untuk file:// atau browser lama
+      const input = document.createElement('input');
+      input.value = url;
+      document.body.appendChild(input);
+      input.select();
+      input.setSelectionRange(0, 99999);
+      const copied = document.execCommand('copy');
+      document.body.removeChild(input);
+      if (copied) {
+        showPopup('✅ Tautan berhasil disalin', 'success');
+      } else {
+        showPopup('‼️ Gagal menyalin tautan', 'error');
+      }
+    }
+  });
+});
+
   // 々  Memuat Banner
   const bannerTrack = document.getElementById('bannerTrack');
   const bannerPopupOverlay = document.getElementById('bannerPopupOverlay');
