@@ -1,5 +1,4 @@
-
-    *, *::before, *::after {
+*, *::before, *::after {
       margin: 0; padding: 0;
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -699,15 +698,6 @@
       }
     }
     
-    .copy-card {
-      position: relative;
-      z-index: 2;
-    }
-    
-    .copy-card::before {
-      pointer-events: none;
-    }
-
     /* THEME POPUP */
     .theme-popup {
       position: absolute;
@@ -1195,7 +1185,7 @@
 
   cursor: pointer;
 
-  font-size: 12px;
+  font-size: 18px;
 
   font-family: var(--mono);
 
@@ -1210,6 +1200,16 @@
 .like-btn.liked {
 
   color: #ff4d6d;
+}
+
+.like-btn.pop {
+  animation: likePop 0.35s ease;
+}
+
+@keyframes likePop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
 }
 
     /* DONATION */
@@ -1556,4 +1556,3 @@
         grid-template-columns: repeat(3, 1fr);
       }
     }
-  
