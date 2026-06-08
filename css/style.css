@@ -617,19 +617,18 @@
     }
     
     .expand-footer {
-  font-size: 12px;
-  color: var(--subtext);
-  line-height: 1.5;
-
-  max-height: 180px;
-  overflow-y: auto;
-
-  padding-right: 4px;
-}
+      font-size: 12px;
+      color: var(--subtext);
+      line-height: 1.5;
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 4px;
+      white-space: pre-line;
+    }
     
     .expand-footer::-webkit-scrollbar {
-  width: 4px;
-}
+      width: 4px;
+    }
 
 .expand-footer::-webkit-scrollbar-thumb {
   background: var(--border2);
