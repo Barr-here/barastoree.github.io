@@ -67,7 +67,7 @@ fetch('db/testimoni.json')
               </div>
               <button
                 class="like-btn"
-                data-id="${item._id}"
+                data-id="${item.title}"
               > ♥ </button>
             </div>
 
