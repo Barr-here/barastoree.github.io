@@ -33,6 +33,28 @@ qrisPopup.onclick = (e) => {
 
 };
 
+// ============================================================
+// MUSIC TOGGLE
+// ============================================================
+
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+
+let playing = false;
+
+musicBtn.onclick = () => {
+
+  if (playing) {
+    bgMusic.pause();
+    musicBtn.textContent = '🎵';
+  } else {
+    bgMusic.play();
+    musicBtn.textContent = '🔊';
+  }
+
+  playing = !playing;
+
+};
 
 // ============================================================
 // TESTIMONI
