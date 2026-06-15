@@ -5,17 +5,8 @@
 const qrisPopup =
   document.getElementById('qrisPopup');
 
-const openQris =
-  document.getElementById('openQris');
-
 const closeQris =
   document.getElementById('closeQris');
-
-openQris.onclick = () => {
-
-  qrisPopup.classList.add('show');
-
-};
 
 closeQris.onclick = () => {
 
@@ -31,6 +22,29 @@ qrisPopup.onclick = (e) => {
 
   }
 
+};
+
+// ============================================================
+// DONASI POPUP
+// ============================================================
+
+const donasiPopup = document.getElementById('donasiPopup');
+
+document.getElementById('openDonasi').onclick = () => {
+  donasiPopup.classList.add('show');
+  document.body.style.overflow = 'hidden';
+};
+
+donasiPopup.onclick = (e) => {
+  if (e.target === donasiPopup) {
+    donasiPopup.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+};
+
+document.getElementById('openQrisFromDonasi').onclick = () => {
+  donasiPopup.classList.remove('show');
+  qrisPopup.classList.add('show');
 };
 
 // ============================================================
