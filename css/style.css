@@ -352,6 +352,8 @@
   font-weight: 700;
 
   transition: 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
 .popup-btn.wa {
@@ -876,26 +878,20 @@
     0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* TEXT */
-.mini-title {
+  /* TEXT */
+  .mini-title {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 1px;
+    margin-left: -3px;
+  }
 
-  font-family: var(--mono);
-
-  font-size: 14px;
-
-  font-weight: 700;
-
-  margin-bottom: 4px;
-}
-
-.mini-desc {
-
-  font-size: 10px;
-
-  color: var(--subtext);
-
-  line-height: 1.5;
-}
+  .mini-desc {
+    font-size: 12px;
+    color: var(--subtext);
+    line-height: 1.5;
+  }
 
 /* MOBILE */
 @media (max-width: 520px) {
